@@ -1,0 +1,239 @@
+﻿@{
+    Layout = "~/Views/Dashboard/Dashboard.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-chart">
+            <div class="card-header">
+                <h4 class="card-title">User List</h4>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive-lg">
+                    <div class="tbl-header">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Photo</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <div class="tbl-content">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <tbody>
+                                @foreach (var user in ViewBag.UserList)
+                                {
+                                    <tr>
+                                        <td>@user.AdminID</td>
+                                        <td>@user.AdminName</td>
+                                        <td>@user.AdminRole</td>
+                                        <td><img src="data:image/png;base64,@user.AdminPhoto" alt="Uploaded Image" width="50" height="50" /></td>
+                                        <td>
+                                            @using (Html.BeginForm("deleteUserAsync", "Dashboard", FormMethod.Post))
+                                            {
+                                                <input id="AdminID" name="AdminID" type="hidden" value="@user.AdminID" />
+                                                <button type="submit" class="bubbly-button"><i class="fa fa-solid fa-trash"></i></button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!---------------------------------------------Product list----------------------------------------->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-chart">
+            <div class="card-header">
+                <h4 class="card-title">Inventory</h4>
+            </div>
+            <div class="card-body">
+                <div class="tbl-header">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Quantity</th>
+                                <th>Brand</th>
+                                <th>Price</th>
+                                <th>Photo</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="tbl-content">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            @foreach (var Product in ViewBag.ProductList)
+                            {
+                                <tr>
+                                    <td>@Product.ProductID</td>
+                                    <td>@Product.ProductName</td>
+                                    <td>@Product.ProductType</td>
+                                    <td>@Product.ProductQuantity</td>
+                                    <td>@Product.ProductBrand</td>
+                                    <td>@Product.ProductPrice</td>
+                                    <td>
+                                        @{string img = Convert.ToBase64String(Product.ProductImage);}
+                                    <img src="data:image/png;base64,@img" alt="Uploaded Image" height="50" />
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("deleteProductAsync", "Dashboard", FormMethod.Post))
+                                    {
+                                        <input id="ProductID" name="ProductID" type="hidden" value="@Product.ProductID" />
+                                        <button type="submit" class="bubbly-button"><i class="fa fa-solid fa-trash"></i></button>
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<!---------------------------------------------image list----------------------------------------->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-chart">
+            <div class="card-header">
+                <h4 class="card-title">Images</h4>
+            </div>
+            <div class="card-body">
+                <div class="tbl-header">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <colgroup>
+                            <col style="width:5%">
+                            <col style="width:10%">
+                            <col style="width:65%">
+                            <col style="width:10%">
+                            <col style="width:10%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="tbl-content">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <colgroup>
+                            <col style="width:5%">
+                            <col style="width:10%">
+                            <col style="width:65%">
+                            <col style="width:10%">
+                            <col style="width:10%">
+                        </colgroup>
+                        <tbody>
+                            @foreach (var Image in ViewBag.ImageList)
+                            {
+                                <tr>
+                                    <td>@Image.ImgID</td>
+                                    <td>@Image.ImgName</td>
+                                    <td>@Image.ImgDesc</td>
+                                    @{string img = Convert.ToBase64String(Image.ImgData);}
+                                    <td><img src="data:image/png;base64,@img" alt="Uploaded Image" height="50" /></td>
+                                    <td>
+                                        @using (Html.BeginForm("deleteImageAsync", "Dashboard", FormMethod.Post))
+                                        {
+                                            <input id="ImgID" name="ImgID" type="hidden" value="@Image.ImgID" />
+                                            <button type="submit" class="bubbly-button"><i class="fa fa-solid fa-trash"></i></button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<!---------------------------------------------cart list----------------------------------------->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-chart">
+            <div class="card-header">
+                <h4 class="card-title">Cart</h4>
+            </div>
+            <div class="card-body">
+                <div class="tbl-header">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                       
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Address</th>
+                                <th>Products</th>
+                                <th>Quantities</th>
+                                <th>GrandTotal</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="tbl-content">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        
+                        <tbody>
+                            @foreach (var cart in ViewBag.CartList)
+                            {
+                                <tr>
+                                    <td>@cart.UserName</td>
+                                    <td>@cart.UserAddress</td>
+                                    <td>@cart.ProductName</td>
+                                    <td>@cart.Quantities</td>
+                                    <td>@cart.GrandTotal</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Dashboard/Dashboard.cshtml";
+}
+
+<section>
+    <br />
+    <div class="container" style="padding: 50px; background: rgba(113, 116, 137, 0.16); border-radius:20px;">
+        @using (Html.BeginForm("AddProductAsync", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {<h1 style="color:white;">Add Product</h1>
+
+
+            <div class="form-group">
+                <label for="ProductID" style="color:#ffff00">ID</label>
+                <input id="ProductID" name="ProductID" type="text" value="" class="form-control" style="color: #ffff00; background-color:transparent;" />
+            </div>
+            <div class="form-group">
+                <label for="ProductName" style="color:#ffff00">Name</label>
+                <input id="ProductName" name="ProductName" type="text" value="" class="form-control" style="color:#ffff00; background-color:transparent;"/>
+            </div>
+            <div class="form-group">
+                <label for="ProductType" style="color:#ffff00">Type</label>
+                <input id="ProductType" name="ProductType" type="text" value="" class="form-control" style="color:#ffff00; background-color:transparent;" />
+            </div>
+            <div class="form-group">
+                <label for="ProductQuantity" style="color:#ffff00">Quantity</label>
+                <input id="ProductQuantity" name="ProductQuantity" type="text" value="" class="form-control"  style="color:#ffff00; background-color:transparent;"/>
+            </div>
+            <div class="form-group">
+                <label for="ProductBrand" style="color:#ffff00">Brand</label>
+                <input id="ProductBrand" name="ProductBrand" type="text" value="" class="form-control"  style="color:#ffff00; background-color:transparent;" />
+            </div>
+            <div class="form-group">
+                <label for="ProductPrice" style="color:#ffff00">Price</label>
+                <input id="ProductPrice" name="ProductPrice" type="text" value="" class="form-control"  style="color:#ffff00; background-color:transparent;"/>
+            </div>
+            <br />
+                <input type="file" name="ProductPhoto" class="form-control-file"   style="color:#ffff00; background-color:transparent;" />
+
+            <br /> <br />
+
+            <button type="submit" class="btn" style="background-color:#ffff00;color:black">Add</button>
+        }
+    </div>
+</section>
+
+

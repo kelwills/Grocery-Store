@@ -1,0 +1,52 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Animated Login Form - Nothing4us </title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <body>
+        <section>
+            @using (Html.BeginForm("AddUserAsync", "SignUp", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {<h1>Sign Up</h1>
+                <div class="inputbox">
+                    <input id="AdminID" name="AdminID" type="text" value="" />
+                    <label for="">ID</label>
+                </div>
+
+                <div class="inputbox">
+                    <input id="AdminName" name="AdminName" type="text" value="" />
+                    <label for="">Name</label>
+                </div>
+
+                <div class="inputbox">
+                    <input id="AdminRole" name="AdminRole" type="text" value="" />
+                    <label for="">Role</label>
+                </div>
+
+                <div class="inputbox">
+                    <input id="AdminPassword" name="AdminPassword" type="text" value="" />
+                    <label for="">Password</label>
+                </div>
+
+                <input id="AdminPic" name="AdminPic" type="file" value="" />
+
+                <br /> <br />
+                <button type="submit">Sign Up</button>
+            }
+        </section>
+    </body>
+    <!-- partial -->
+
+</body>
+</html>
+

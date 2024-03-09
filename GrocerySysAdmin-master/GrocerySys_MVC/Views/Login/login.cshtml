@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Animated Login Form - Nothing4us </title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <body>
+        <section>
+            <form action="Login/verifyLogin" method="post">
+                <center><img src="~/Content/img/faitlogo.png" width="150" /></center>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" required name="ID">
+                    <label for="">ID</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" required name="Password">
+                    <label for="">Password</label>
+                </div><br /><br /><br />
+                <button type="submit">Log in</button>
+            </form>
+        </section>
+
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <script>
+        alert('@ViewBag.ErrorMessage');
+            </script>
+        }
+    </body>
+    <!-- partial -->
+
+</body>
+</html>
